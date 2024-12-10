@@ -1,4 +1,16 @@
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "./loginButton";
+import SignupButton from "./signupButton";
+import LogoutButton from "./logoutButton";
+
 const Navbar = () => {
+  const { isAuthenticated, user, error, isLoading } = useAuth0();
+
+  console.log("Is Authenticated:", isAuthenticated);
+  console.log("User Info:", user);
+  console.log("Error:", error);
+  console.log("Loading State:", isLoading);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -17,25 +29,19 @@ const Navbar = () => {
             className="container-fluid justify-content-start"
             style={{ gap: "15px" }}
           >
-            <button
-              className="btn btn-sm btn-outline-secondary lisu-bosa-regular"
-              type="button"
-            >
-              Log In
-            </button>
-            <button
-              className="btn btn-sm btn-primary me-2 lisu-bosa-regular"
-              type="button"
-              style={{
-                backgroundColor: "#DF8955",
-                border: "none",
-                padding: "5px",
-                paddingRight: "8px",
-                paddingLeft: "8px",
-              }}
-            >
-              Sign Up
-            </button>
+            {!isAuthenticated && <LoginButton> Log In </LoginButton>}
+            {!isAuthenticated && (
+              <SignupButton
+                style={{
+                  backgroundColor: "#DF8955",
+                  border: "none",
+                }}
+              >
+                {" "}
+                Sign Up{" "}
+              </SignupButton>
+            )}
+            {isAuthenticated && <LogoutButton>Log Out</LogoutButton>}
           </form>
         </nav>
       </div>
