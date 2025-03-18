@@ -1,28 +1,27 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../database.js";
 
-class Event extends Model {}
+class Allergies extends Model {}
 
-Event.init(
+Allergies.init(
   {
     eventid: {
       type: DataTypes.STRING,
       primaryKey: true,
+      references: {
+        model: "events",
+        key: "eventID",
+      },
     },
-    eventname: {
+    allergy: {
       type: DataTypes.STRING,
-    },
-    address: {
-      type: DataTypes.STRING,
-    },
-    date: {
-      type: DataTypes.DATE,
+      primaryKey: true,
     },
   },
   {
     sequelize,
-    tableName: "events",
+    tableName: "allergy",
   }
 );
 
-export default Event;
+export default Allergies;

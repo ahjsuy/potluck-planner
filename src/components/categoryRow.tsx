@@ -1,22 +1,18 @@
+import Dish from "../models/dishesModel";
 import CategoryInput from "./categoryInput";
 import CloseButton from "./closeButton";
 import TypeButton from "./typeButton";
 import { useEffect, useState } from "react";
-
-interface Dishes {
-  id: string;
-  dishName: string;
-  personAssigned: string;
-  portions: string;
-}
+import { Dishes } from "../types";
 
 interface Props {
   setStateArray: React.Dispatch<React.SetStateAction<Dishes[]>>;
   index: number;
   noCloseButton?: boolean;
+  dish: Dishes;
 }
 
-const CategoryRow = ({ setStateArray, noCloseButton, index }: Props) => {
+const CategoryRow = ({ setStateArray, noCloseButton, index, dish }: Props) => {
   // const [dishValue, setDishValue] = useState("");
 
   // useEffect(() => {
@@ -32,9 +28,10 @@ const CategoryRow = ({ setStateArray, noCloseButton, index }: Props) => {
 
   return (
     <div className="flex-row" style={{ gap: "1em" }}>
-      <div style={{ minWidth: "30vw", paddingLeft: "0.5em" }}>
+      <div style={{ minWidth: "15vw", flexGrow: "1" }}>
         <CategoryInput
-          propToUpdate="dishName"
+          placeholder={dish.dishname}
+          propToUpdate="dishname"
           index={index}
           setStateArray={setStateArray}
         />
@@ -43,25 +40,36 @@ const CategoryRow = ({ setStateArray, noCloseButton, index }: Props) => {
           onChange={(e) => setDishValue(e.target.value)}
         /> */}
       </div>
-      <div style={{ minWidth: "30vw", maxWidth: "25vw", paddingLeft: "0.5em" }}>
+      <div
+        style={{
+          flexGrow: "1",
+          minWidth: "20vw",
+          maxWidth: "25vw",
+          paddingLeft: "0.5em",
+        }}
+      >
         {/* <TypeButton placeholderText="John Smith" noAddButton={true} /> */}
         <CategoryInput
-          propToUpdate="personAssigned"
+          placeholder={dish.dishguest}
+          propToUpdate="dishguest"
           index={index}
           setStateArray={setStateArray}
         />
       </div>
-      <div style={{ minWidth: "10vw", paddingLeft: "0.5em" }}>
+      <div style={{ flexGrow: "1", minWidth: "5vw", paddingLeft: "0.5em" }}>
         {/* <TypeButton placeholderText="8 servings" noAddButton={true} /> */}
         <CategoryInput
-          propToUpdate="portions"
+          placeholder={dish.dishportion}
+          propToUpdate="dishportion"
           index={index}
           setStateArray={setStateArray}
         />
       </div>
-      {!noCloseButton && (
-        <CloseButton setStateArray={setStateArray} index={index} />
-      )}
+      <div style={{}}>
+        {!noCloseButton && (
+          <CloseButton setStateArray={setStateArray} index={index} />
+        )}
+      </div>
     </div>
   );
 };

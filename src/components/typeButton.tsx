@@ -24,7 +24,13 @@ const TypeButton = ({
   };
 
   return (
-    <div>
+    <div
+      style={{
+        margin: "auto",
+        backgroundColor: "rgb(223, 223, 223)",
+        borderRadius: "0.5em",
+      }}
+    >
       <form onSubmit={handleSubmit} style={{ display: "flex" }}>
         <input
           className={`form-control ${classNames}`}
@@ -32,7 +38,12 @@ const TypeButton = ({
           aria-label="Add button"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          style={{ width: `${value.length + 3}ch` }}
+          style={{
+            width: `${value.length + 5}ch`,
+            margin: "auto",
+            padding: "0 1em",
+            fontSize: "1.125em",
+          }}
         />
         {!noAddButton && <AddButton />}
       </form>

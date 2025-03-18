@@ -15,7 +15,12 @@ const CloseButton = <T,>({ setStateArray, index }: Props<T>) => {
   };
   return (
     <button className="add-button" onClick={handleClick}>
-      <span className="material-symbols-outlined">close</span>
+      <span
+        // style={{ placeSelf: "center" }}
+        className="material-symbols-outlined"
+      >
+        close
+      </span>
     </button>
   );
 };

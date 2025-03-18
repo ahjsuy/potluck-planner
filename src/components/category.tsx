@@ -1,13 +1,7 @@
 // import { useState, Dispatch, SetStateAction } from "react";
 import CategoryRow from "./categoryRow";
 import { v4 as uuidv4 } from "uuid";
-
-interface Dishes {
-  id: string;
-  dishName: string;
-  personAssigned: string;
-  portions: string;
-}
+import { Dishes } from "../types";
 
 interface Props {
   header: string;
@@ -22,9 +16,10 @@ const Category = ({ header, setDishes, dishes }: Props) => {
   const handleAddAnotherRow = () => {
     const newDish = {
       id: uuidv4(),
-      dishName: "",
-      personAssigned: "",
-      portions: "0",
+      dishname: "",
+      dishguest: "",
+      dishportion: "",
+      category: header,
     };
     if (!dishes) {
       setDishes([newDish]);
@@ -37,12 +32,27 @@ const Category = ({ header, setDishes, dishes }: Props) => {
   return (
     <div style={{ padding: "1em" }}>
       <div>
-        <h2>{header}</h2>
+        <div>
+          <h1 className="lisu-bosa-regular">
+            <img className="vine" src="/assets/vine-left.svg"></img>
+            {header}
+            <img
+              className="vine flip-horizontally"
+              src="/assets/vine-left.svg"
+            ></img>
+          </h1>
+        </div>
+        <hr className="half-hr"></hr>
       </div>
-      <div className="flex-row" style={{ gap: "1em" }}>
-        <h3 style={{ minWidth: "30vw", textAlign: "left" }}>Dishes</h3>
-        <h3 style={{ minWidth: "30vw", textAlign: "left" }}>Person Assigned</h3>
-        <h3 style={{ minWidth: "10vw", textAlign: "left" }}>Portions</h3>
+      <div
+        className="flex-row lisu-bosa-regular"
+        style={{ textAlign: "center", gap: "3em" }}
+      >
+        <h3 style={{ flexGrow: "1", minWidth: "15vw" }}>Dishes</h3>
+        <h3 style={{ flexGrow: "1", minWidth: "20vw" }}>Person Assigned</h3>
+        <h3 style={{ flexGrow: "1", minWidth: "5vw", textAlign: "left" }}>
+          Portions
+        </h3>
       </div>
       <div>
         <ul
@@ -50,11 +60,21 @@ const Category = ({ header, setDishes, dishes }: Props) => {
           style={{
             display: "flex",
             listStyleType: "none",
-            gap: "0.25em",
+            gap: "1em",
+            // paddingLeft: "0",
+            placeSelf: "center",
+            placeContent: "center",
           }}
         >
           {dishes.map((dish, i) => (
-            <CategoryRow setStateArray={setDishes} index={i} key={dish.id} />
+            <div>
+              <CategoryRow
+                dish={dish}
+                setStateArray={setDishes}
+                index={i}
+                key={dish.id}
+              />
+            </div>
           ))}
           {/* {categoryArray.map((item, i) => (
             <div className="flex-column">
@@ -63,7 +83,13 @@ const Category = ({ header, setDishes, dishes }: Props) => {
           ))} */}
         </ul>
       </div>
-      <button onClick={handleAddAnotherRow}>Add another?</button>
+      <button
+        className="orange-button lisu-bosa-regular"
+        style={{ margin: "1em" }}
+        onClick={handleAddAnotherRow}
+      >
+        Add another?
+      </button>
     </div>
   );
 };

@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-
-interface Dishes {
-  id: string;
-  dishName: string;
-  personAssigned: string;
-  portions: string;
-}
+import { Dishes } from "../types";
 
 interface Props {
+  placeholder: string;
   propToUpdate: keyof Dishes;
   index: number;
   setStateArray?: React.Dispatch<React.SetStateAction<Dishes[]>>;
 }
 
-const CategoryInput = ({ propToUpdate, index, setStateArray }: Props) => {
-  const [value, setValue] = useState("");
+const CategoryInput = ({
+  placeholder,
+  propToUpdate,
+  index,
+  setStateArray,
+}: Props) => {
+  const [value, setValue] = useState(placeholder ?? "");
 
   useEffect(() => {
     if (typeof index === "number" && setStateArray) {
@@ -29,7 +29,11 @@ const CategoryInput = ({ propToUpdate, index, setStateArray }: Props) => {
 
   return (
     <div>
-      <input value={value} onChange={(e) => setValue(e.target.value)} />
+      <input
+        className="line-input lisu-bosa-regular"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
     </div>
   );
 };

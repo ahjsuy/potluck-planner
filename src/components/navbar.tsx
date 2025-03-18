@@ -2,6 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./loginButton";
 import SignupButton from "./signupButton";
 import LogoutButton from "./logoutButton";
+import turkeyChicken from "/assets/turkey-chicken-svgrepo-com.svg";
 
 const Navbar = () => {
   const { isAuthenticated, user, error, isLoading } = useAuth0();
@@ -17,7 +18,7 @@ const Navbar = () => {
         <a className="navbar-brand" href="#">
           <text className="just-another-hand-regular"> Potluck Planner </text>
           <img
-            src="src\assets\turkey-chicken-svgrepo-com.svg"
+            src={turkeyChicken}
             width="24px"
             height="24px"
             className="d-inline-block align-text-top"

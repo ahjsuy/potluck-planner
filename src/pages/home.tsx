@@ -1,3 +1,4 @@
+import InfoCard from "../components/infoCard";
 import Navbar from "../components/navbar";
 import TitleCard from "../components/TitleCard";
 
@@ -25,13 +26,16 @@ const Home = () => {
       <div className="feast-bg">
         <TitleCard />
       </div>
-      <div className="info">
-        <div>HERE IS INFO 1</div>
-        <div>HERE IS INFO 2</div>
-        <div>HERE IS INFO 3</div>
-      </div>
-      <div>
-        <button onClick={getReq}>API REQUEST</button>
+      <div className="info flex-row">
+        <div className="small">
+          <InfoCard text="Send out automatic email reminders to invitees!" />
+        </div>
+        <div className="small">
+          <InfoCard text="Schedule with your friends" />
+        </div>
+        <div className="small">
+          <InfoCard text="Edit the meal planner until the deadline" />
+        </div>
       </div>
     </div>
   );
