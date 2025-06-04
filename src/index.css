@@ -11,12 +11,21 @@
 }
 
 .feast-bg {
-  background-image: url("assets/pexels-nicole-michalou-5779170.jpg");
-  height: 90vh;
+  /* background-image: url("assets/pexels-nicole-michalou-5779170.jpg"); */
+  background-image: url("assets/feast.jpg");
+  background-color: rgb(226, 206, 178);
+  height: 100vh;
   width: 100vw;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  place-content: center;
+  align-content: center;
+  margin-top: -7rem;
+}
+
+.nav {
+  background-color: rgb(226, 206, 178) !important;
 }
 
 .title-card {

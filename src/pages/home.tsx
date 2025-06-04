@@ -24,7 +24,13 @@ const Home = () => {
     <div>
       <Navbar />
       <div className="feast-bg">
-        <TitleCard />
+        <div
+          className="home-tagline just-another-hand-regular"
+          style={{ textAlign: "center", paddingBottom: "20rem" }}
+        >
+          <h1 style={{ fontSize: "5rem" }}>Friends. Food. Festivities.</h1>
+          <h2 style={{ fontSize: "2.5rem" }}>We make it easy.</h2>
+        </div>
       </div>
       <div className="info flex-row">
         <div className="small">

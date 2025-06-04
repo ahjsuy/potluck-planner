@@ -2,9 +2,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 interface buttonProps {
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
-const LoginButton = ({ children }: buttonProps) => {
+const LoginButton = ({ children, style }: buttonProps) => {
   const { loginWithRedirect } = useAuth0();
 
   const handleLogin = async () => {
@@ -19,7 +20,7 @@ const LoginButton = ({ children }: buttonProps) => {
     <button
       className="btn btn-sm btn-outline-secondary lisu-bosa-regular"
       type="button"
-      style={{}}
+      style={style}
       onClick={handleLogin}
     >
       {children}
